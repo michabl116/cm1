@@ -2,15 +2,15 @@ import { useState } from "react";
 import "./SignupPage.css";
 
 const SignupPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nationality, setNationality] = useState("de");
-  const [emailValid, setEmailValid] = useState(false);
-  const [passwordStrong, setPasswordStrong] = useState(false);
+  const [email, setEmail] = useState('maxence@ironhack.com');
+  const [password, setPassword] = useState('...');
+  const [nationality, setNationality] = useState('de');
+  const [emailValid, setEmailValid] = useState(null);
+  const [passwordStrength, setPasswordStrength] = useState(null);
 
   const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
   };
 
   const validatePassword = (password) => {
@@ -18,70 +18,89 @@ const SignupPage = () => {
   };
 
   const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    setEmailValid(validateEmail(value));
+    setEmail(e.target.value);
+    setEmailValid(validateEmail(e.target.value));
   };
 
   const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-    setPasswordStrong(validatePassword(value));
+    setPassword(e.target.value);
+    setPasswordStrength(validatePassword(e.target.value));
   };
 
-  const handleNationalityChange = (e) => {
-    setNationality(e.target.value);
-  };
-
-  const greetings = {
-    fi: "Moi",
-    en: "Hello",
-    de: "Hallo",
-    fr: "Bonjour",
+  const getGreeting = (nationality) => {
+    switch (nationality) {
+      case 'fi':
+        return 'Moi';
+      case 'en':
+        return 'Hello';
+      case 'de':
+        return 'Hallo';
+      case 'fr':
+        return 'Bonjour';
+      default:
+        return '';
+    }
   };
 
   return (
-    <div className="signup-container">
+    <div className="signup-page">
       <div className="form-group">
-        <label>Email:</label>
+        <label>Email</label>
         <input
           type="email"
           value={email}
           onChange={handleEmailChange}
-          className={emailValid ? "valid" : "invalid"}
+          className={`input ${emailValid === null ? '' : emailValid ? 'valid' : 'invalid'}`}
+          placeholder="Enter your email"
         />
-        {emailValid ? (
-          <p className="valid-message">You typed a valid email.</p>
-        ) : (
-          <p className="invalid-message">Please enter a valid email.</p>
-        )}
+        <small className={emailValid ? "text-valid" : "text-invalid"}>
+          {emailValid === null
+            ? ""
+            : emailValid
+            ? "You typed a valid email"
+            : "Please enter a valid email"}
+        </small>
       </div>
+
       <div className="form-group">
-        <label>Password:</label>
+        <label>Password</label>
         <input
           type="password"
           value={password}
           onChange={handlePasswordChange}
-          className={passwordStrong ? "valid" : "invalid"}
+          className={`input ${passwordStrength === null ? '' : passwordStrength ? 'valid' : 'invalid'}`}
+          placeholder="Enter your password"
         />
-        {passwordStrong ? (
-          <p className="valid-message">Your password is strong.</p>
-        ) : (
-          <p className="invalid-message">Your password is too weak.</p>
-        )}
+        <small className={passwordStrength ? "text-valid" : "text-invalid"}>
+          {passwordStrength === null
+            ? ""
+            : passwordStrength
+            ? "Your password is strong"
+            : "Your password is too weak"}
+        </small>
       </div>
+
       <div className="form-group">
-        <label>Nationality:</label>
-        <select value={nationality} onChange={handleNationalityChange}>
+        <label>Nationality</label>
+        <select
+          value={nationality}
+          onChange={(e) => setNationality(e.target.value)}
+          className="input"
+        >
           <option value="fi">Finnish</option>
           <option value="en">English</option>
           <option value="de">German</option>
           <option value="fr">French</option>
         </select>
       </div>
-      <p>{greetings[nationality]}</p>
-      <p>Your email is {email || "john@doe.com"}</p>
-      <button className="signup-button">Sign up</button>
+
+      <button className="submit-button">Sign up</button>
+
+      <div className="greeting">
+        <p>{getGreeting(nationality)}</p>
+        <p>Your email address is: {email}</p>
+        <p>{emailValid ? "Your email address is correct" : ""}</p>
+      </div>
     </div>
   );
 };

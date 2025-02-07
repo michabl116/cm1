@@ -1,14 +1,13 @@
 /* SignupPage.css */
 
-.signup-container {
+.signup-page {
     width: 350px;
     margin: 50px auto;
-    font-family: Arial, sans-serif;
-    border: 1px solid #ccc;
     padding: 20px;
+    background-color: #f5f7fa; /* Light background for the form */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f8f9fa; /* Subtle light blue background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
   }
   
   .form-group {
@@ -17,14 +16,13 @@
   
   label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 14px;
     font-weight: bold;
     color: #333;
   }
   
-  input[type="email"],
-  input[type="password"],
-  select {
+  .input {
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -33,64 +31,52 @@
     box-sizing: border-box;
   }
   
-  input[type="email"].valid,
-  input[type="password"].valid {
+  .input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .input.valid {
     border-color: green;
   }
   
-  input[type="email"].invalid,
-  input[type="password"].invalid {
+  .input.invalid {
     border-color: red;
   }
   
-  .valid-message {
+  small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  
+  .text-valid {
     color: green;
-    font-size: 12px;
-    margin-top: 5px;
   }
   
-  .invalid-message {
+  .text-invalid {
     color: red;
-    font-size: 12px;
-    margin-top: 5px;
   }
   
-  select {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-sizing: border-box;
-  }
-  
-  p {
-    text-align: center;
-    font-size: 14px;
-    margin: 10px 0;
-    color: #333;
-  }
-  
-  .signup-button {
+  .submit-button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    font-weight: bold;
-    color: #fff;
     background-color: #007bff;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: center;
   }
   
-  .signup-button:hover {
+  .submit-button:hover {
     background-color: #0056b3;
   }
   
-  .signup-container p:last-of-type {
-    font-size: 12px;
-    color: #555;
+  .greeting {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: #333;
   }
-  
