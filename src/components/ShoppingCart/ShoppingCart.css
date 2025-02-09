@@ -1,0 +1,75 @@
+/* Estilos generales */
+.shopping-cart {
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Título */
+.shopping-cart h1 {
+    color: #5c3b1e;
+}
+
+/* Inputs y botón */
+.shopping-cart input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.shopping-cart button {
+    width: 100%;
+    padding: 10px;
+    background: #f8d7a3;
+    color: #5c3b1e;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.shopping-cart button:hover {
+    background: #d2691e;
+    color: white;
+}
+
+/* Lista de productos */
+.shopping-cart ol {
+    list-style: none;
+    padding: 0;
+}
+
+.shopping-cart li {
+    background: #f1f1f1;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+/* Botón de eliminar */
+.shopping-cart li button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.shopping-cart li button:hover {
+    background: #cc0000;
+}
